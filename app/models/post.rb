@@ -5,14 +5,12 @@ class Post < ActiveRecord::Base
     validates :content, length: { minimum: 250 }
     validates :summary, length: { maximum: 250 }
     validates :category, inclusion: { in: %w(Fiction Non-Fiction)}
+    validate :clickbaity_title
 
 
-  class MyValidator < ActiveModel::Validator
-    include ActiveModel::Validations
-    validates_with MyValidator
-      def validate(post)
-        if !post.title.include?("Won't Believe" || "Secret" || "Top [number]" || "Guess")
-          post.errors[:title] << "It's not clickbait-y!"
+      def clickbaity_title
+        if title == !nil && !title.include?("Won't Believe") && !title.include?("Secret") && !title.include?("Guess") && !title.match(/Top\s\d+/)
+          errors.add[:title] << "It's not clickbait-y enough!"
       end
     end
   end
