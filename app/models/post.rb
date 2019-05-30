@@ -1,7 +1,6 @@
 class Post < ActiveRecord::Base
 
-  include ActiveModel::Validations
-  validates_with MyValidator
+
 
     validates :title, presence: true
     validates :content, length: { minimum: 250 }
@@ -10,6 +9,8 @@ class Post < ActiveRecord::Base
 
 
   class MyValidator < ActiveModel::Validator
+    include ActiveModel::Validations
+    validates_with MyValidator
       def validate(post)
         unless post.title.include? "Won't Believe || Secret || Top [number] || Guess"
           post.errors[:title] << "It's not clickbait-y!"
