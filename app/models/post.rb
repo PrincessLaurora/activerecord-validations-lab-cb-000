@@ -8,9 +8,9 @@ class Post < ActiveRecord::Base
     validate :clickbaity_title
 
 
-      def clickbaity_title
-        if title == !nil && !title.include?("Won't Believe") && !title.include?("Secret") && !title.include?("Guess") && !title.match(/Top\s\d+/)
-          errors.add[:title] << "It's not clickbait-y enough!"
+    def clickbaity_title
+      if title == !nil && !title.include?("Won't Believe") && !title.include?("Secret") && !title.include?("Guess") && !title.match(/Top\s\d+/)
+        errors.add[:title] << "It's not clickbait-y enough!"
       end
     end
 
