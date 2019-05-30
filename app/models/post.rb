@@ -13,6 +13,6 @@ class Post < ActiveRecord::Base
           errors.add[:title] << "It's not clickbait-y enough!"
       end
     end
-  end
+
 
 end
