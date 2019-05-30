@@ -11,8 +11,8 @@ class Post < ActiveRecord::Base
     class MyValidator < ActiveModel::Validator
       def validate(post)
         unless post.title.include? "Won't Believe || Secret || Top [number] || Guess"
-          post.errors[:title] << "It's not clickbait-y!""
+          post.errors[:title] << "It's not clickbait-y!"
       end
     end
-
+  end
 end
