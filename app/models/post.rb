@@ -18,4 +18,4 @@ end
 class Post
   include ActiveModel::Validations
   validates_with MyValidator
-end  
+end
